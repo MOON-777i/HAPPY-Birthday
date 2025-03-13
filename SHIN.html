@@ -1,161 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You ❤️</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .message {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #ffebf6;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 400px;
+        }
+
+        .text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .cake {
+            font-size: 4rem;
+            animation: float 2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .open-card {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .qt-page {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff66b2;
+        }
+
+        .cake-page {
+            font-size: 4rem;
+        }
+
+        .wish-card {
+            background-color: #fff5f8;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+    </style>
 </head>
 <body>
-  <div class="container" id="step1">
-    <h1 class="message">I have something for you...</h1>
-    <button class="btn" onclick="nextStep('step2')">Click Me</button>
-  </div>
-
-  <div class="container hidden" id="step2">
-    <h1 class="message">🎉 Happy Birthday Qt 🎂</h1>
-    <button class="btn" onclick="nextStep('step3')">Cut the Cake 🎂</button>
-  </div>
-
-  <div class="container hidden" id="step3">
-    <img src="cake.png" alt="Cake" class="cake">
-    <button class="btn" onclick="nextStep('step4')">Open the Card 🎁</button>
-  </div>
-
-  <div class="container hidden" id="step4">
-    <div class="card">
-      <div class="card-inner">
-        <div class="card-front">💖 Open Me 💖</div>
-        <div class="card-back">
-          <h2>Happy Birthday to the most special person ever! 🎁🎂</h2>
-          <p>You're beautiful, amazing, and truly one of a kind. I hope this day is as wonderful as you are. ❤️</p>
-          <p>Always here for you! 😊</p>
-          <p>~ From Someone Who Cares 😉</p>
-        </div>
-      </div>
+    <div class="container" id="mainContainer">
+        <div class="message" id="message">I have something for you...</div>
+        <div class="cake" id="cake">🎂</div>
+        <button class="open-card hidden" id="openCard">Open the Card</button>
     </div>
-  </div>
 
-  <script>
-    function nextStep(stepId) {
-      document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
-      document.getElementById(stepId).classList.remove('hidden');
-    }
+    <div class="hidden" id="qtPage">
+        <p class="qt-page">Happy Birthday Qt 🎉</p>
+        <button class="open-card" id="cutCake">Cut the Cake</button>
+    </div>
 
-    document.querySelector('.card').addEventListener('click', function() {
-      this.classList.toggle('flip');
-    });
-  </script>
+    <div class="hidden" id="cakePage">
+        <div class="cake-page">🎂🍰🎁</div>
+        <button class="open-card" id="openWishCard">Open the Card</button>
+    </div>
 
-  <link rel="stylesheet" href="style.css">
+    <div class="hidden" id="wishCard">
+        <div class="wish-card">
+            <p class="text">Happy Birthday to the most special person ever! 🎁</p>
+            <p class="text">You're beautiful, amazing, and truly one of a kind. I hope this day is as wonderful as you are. ❤️</p>
+            <p class="text">~ From Someone Who Cares 😊</p>
+        </div>
+    </div>
+
+    <script>
+        const message = document.getElementById('message');
+        const cake = document.getElementById('cake');
+        const openCardBtn = document.getElementById('openCard');
+        const mainContainer = document.getElementById('mainContainer');
+        const qtPage = document.getElementById('qtPage');
+        const cutCakeBtn = document.getElementById('cutCake');
+        const cakePage = document.getElementById('cakePage');
+        const openWishCardBtn = document.getElementById('openWishCard');
+        const wishCard = document.getElementById('wishCard');
+
+        // Show the button after message and cake
+        setTimeout(() => {
+            openCardBtn.classList.remove('hidden');
+        }, 3000);
+
+        // Navigate to "Happy Birthday Qt" page
+        openCardBtn.addEventListener('click', () => {
+            mainContainer.classList.add('hidden');
+            qtPage.classList.remove('hidden');
+        });
+
+        // Navigate to Cake cutting page
+        cutCakeBtn.addEventListener('click', () => {
+            qtPage.classList.add('hidden');
+            cakePage.classList.remove('hidden');
+        });
+
+        // Show the wish card
+        openWishCardBtn.addEventListener('click', () => {
+            cakePage.classList.add('hidden');
+            wishCard.classList.remove('hidden');
+        });
+
+    </script>
 </body>
 </html>
-
-
-<!-- CSS FILE (style.css) -->
-
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffebf3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  .container {
-    text-align: center;
-    animation: fadeIn 1.5s ease-in-out;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .message {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #e84393;
-    animation: bounce 2s infinite alternate;
-  }
-
-  .btn {
-    background-color: #ff8fa3;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .btn:hover {
-    background-color: #ff5f77;
-    transform: scale(1.1);
-  }
-
-  .cake {
-    width: 200px;
-    margin-bottom: 20px;
-    animation: float 3s infinite ease-in-out;
-  }
-
-  .card {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-    cursor: pointer;
-  }
-
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-  }
-
-  .flip .card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    border-radius: 15px;
-  }
-
-  .card-front {
-    background-color: #f9b4c8;
-  }
-
-  .card-back {
-    background-color: #ffe1e9;
-    transform: rotateY(180deg);
-    padding: 20px;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10px); }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
-</style>
