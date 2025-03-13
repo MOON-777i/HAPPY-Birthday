@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6f2;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .message {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #ffebf6;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 400px;
+        }
+
+        .text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .cake {
+            font-size: 4rem;
+            animation: float 2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .open-card {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .qt-page {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff66b2;
+        }
+
+        .cake-page {
+            font-size: 4rem;
+        }
+
+        .wish-card {
+            background-color: #fff5f8;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div class="message" id="message">I have something for you...</div>
+        <div class="cake" id="cake">🎂</div>
+        <button class="open-card hidden" id="openCard">Open the Card</button>
+    </div>
+
+    <div class="hidden" id="qtPage">
+        <p class="qt-page">Happy Birthday Qt 🎉</p>
+        <button class="open-card" id="cutCake">Cut the Cake</button>
+    </div>
+
+    <div class="hidden" id="cakePage">
+        <div class="cake-page">🎂🍰🎁</div>
+        <button class="open-card" id="openWishCard">Open the Card</button>
+    </div>
+
+    <div class="hidden" id="wishCard">
+        <div class="wish-card">
+            <p class="text">Happy Birthday to the most special person ever! 🎁</p>
+            <p class="text">You're beautiful, amazing, and truly one of a kind. I hope this day is as wonderful as you are. ❤️</p>
+            <p class="text">~ From Someone Who Cares 😊</p>
+        </div>
+    </div>
+
+    <script>
+        const message = document.getElementById('message');
+        const cake = document.getElementById('cake');
+        const openCardBtn = document.getElementById('openCard');
+        const mainContainer = document.getElementById('mainContainer');
+        const qtPage = document.getElementById('qtPage');
+        const cutCakeBtn = document.getElementById('cutCake');
+        const cakePage = document.getElementById('cakePage');
+        const openWishCardBtn = document.getElementById('openWishCard');
+        const wishCard = document.getElementById('wishCard');
+
+        // Show the button after message and cake
+        setTimeout(() => {
+            openCardBtn.classList.remove('hidden');
+        }, 3000);
+
+        // Navigate to "Happy Birthday Qt" page
+        openCardBtn.addEventListener('click', () => {
+            mainContainer.classList.add('hidden');
+            qtPage.classList.remove('hidden');
+        });
+
+        // Navigate to Cake cutting page
+        cutCakeBtn.addEventListener('click', () => {
+            qtPage.classList.add('hidden');
+            cakePage.classList.remove('hidden');
+        });
+
+        // Show the wish card
+        openWishCardBtn.addEventListener('click', () => {
+            cakePage.classList.add('hidden');
+            wishCard.classList.remove('hidden');
+        });
+
+    </script>
+</body>
+</html>
